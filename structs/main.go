@@ -23,7 +23,7 @@ type Bird struct{
 }
 
 type BirdDescription struct {
-	Name string `required max:"100"`
+	Name string `requiredmax:"100"`
 	Origin string
 }
 
