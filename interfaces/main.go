@@ -22,3 +22,17 @@ func (ic *IntCounter) Increment() int {
 	*ic++
 	return int(*ic)
 }
+
+// composing interface
+type Writer interface {
+	Write([]byte)(int, error)
+}
+
+type Closer interface {
+	Close() error
+}
+
+type WriterCloser interface {
+	Writer
+	Closer
+}
