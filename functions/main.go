@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt";
+	"fmt"
 )
 
 func main() {
@@ -16,7 +16,6 @@ func main() {
 	// }
 	// fmt.Println(d)
 
-
 	// g := greeter {
 	// 	greeting: "hello",
 	// 	name: "go",
@@ -24,9 +23,26 @@ func main() {
 	// g.greet()
 	// fmt.Println("The new name is:", g.name)
 
-	func3()
+	// Recursive functions
+	// Higher order functions
+	// Structs and methods
+	// Interfaces and reflection
+	// and more
+
+	partial := highOrderFunc(1)
+	fmt.Println(partial(2))
 }
 
+func sumHighOrderFunc(x, y int) int {
+	return x + y
+}
+
+// highOrderFunc
+func highOrderFunc(x int) func(int) int {
+	return func(y int) int {
+		return sumHighOrderFunc(x, y)
+	}
+}
 
 func sayMessage(msg string) {
 	fmt.Println(msg)
@@ -38,7 +54,7 @@ func sum(values ...int) (result int) {
 		result += v
 	}
 
-	return 
+	return
 }
 
 func divide(a, b float64) (float64, error) {
@@ -51,17 +67,16 @@ func divide(a, b float64) (float64, error) {
 
 type greeter struct {
 	greeting string
-	name string
+	name     string
 }
 
-func (g *greeter) greet(){
+func (g *greeter) greet() {
 	fmt.Println(g.greeting, g.name)
 }
 
-
 func func3() {
 	var divide func(float64, float64) (float64, error)
-	divide = func(a,b float64) (float64, error) {
+	divide = func(a, b float64) (float64, error) {
 		if b == 0.0 {
 			return 0.0, fmt.Errorf("Cannot divide by zero")
 		} else {
@@ -74,6 +89,6 @@ func func3() {
 		fmt.Println(err)
 		return
 	}
-	
+
 	fmt.Println(d)
 }
