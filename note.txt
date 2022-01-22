@@ -1,0 +1,14 @@
+advanced concepted:
+   Interfaces and Reflection
+   Error testing
+   Anonymous channel closure
+   Networking, templating, and web-applications
+   Best practices and pitfalls
+   and more
+
+intermediate concepted: 
+	// Recursive functions ( success )
+	// Higher order functions ( success )
+	// Structs and methods
+	// Interfaces and reflection
+	// and more

@@ -4,11 +4,21 @@ import (
 	"fmt"
 )
 
-func main()  {
+func main() {
 	// first()
-	// sec() 
+	// sec()
 	// third()
-	arrayLooping()
+	//arrayLooping()
+
+	stringLoop()
+}
+
+func stringLoop() {
+	var s string = "Hello, world"
+
+	for index, character := range s {
+		fmt.Printf("the character %c in position %d \n", character, index)
+	}
 }
 
 func first() {
@@ -32,17 +42,16 @@ func third() {
 	for i := 1; i <= 3; i++ {
 		for j := 1; j <= 3; j++ {
 			fmt.Println(i * j)
-			if i * j >= 3 {
+			if i*j >= 3 {
 				break
 			}
 		}
 	}
 }
 
-
 func arrayLooping() {
-	s := []int{1,2,3}
-	for k,v := range s {
-		fmt.Println(k,v)
+	s := []int{1, 2, 3}
+	for k, v := range s {
+		fmt.Println(k, v)
 	}
 }

@@ -4,34 +4,49 @@ import (
 	"fmt"
 	"reflect"
 )
+
 // type save like interface
 type Doctor struct {
-	number int
-	actorName string
+	number     int
+	actorName  string
 	companions []string
 }
 
 type Animal struct {
-	Name string
+	Name   string
 	Origin string
 }
 
-type Bird struct{
+type Bird struct {
 	Animal
 	SpeedKPH float32
-	Canfly bool
+	Canfly   bool
 }
 
 type BirdDescription struct {
-	Name string `requiredmax:"100"`
+	Name   string `requiredmax:"100"`
 	Origin string
 }
 
-func main(){
-	aDoctor := Doctor {
-		number: 3,
+func (d Doctor) getCompanions() []string { // methods of struct
+	return d.companions
+}
+
+func (d Doctor) convertCompanions() map[int]string {
+	result := make(map[int]string)
+
+	for i, value := range d.companions {
+		result[i] = value
+	}
+
+	return result
+}
+
+func main() {
+	aDoctor := Doctor{
+		number:    3,
 		actorName: "Jon Pertwee",
-		companions: []string {
+		companions: []string{
 			"Liz Shaw",
 			"Jo Grant",
 			"Sarah Jane Smith",
@@ -39,11 +54,14 @@ func main(){
 	}
 	fmt.Println(aDoctor)
 	fmt.Println(aDoctor.number)
-	bee()
-	description()
+	fmt.Println(aDoctor.getCompanions())
+	fmt.Println(aDoctor.convertCompanions())
+
+	// bee()
+	// description()
 }
 
-func bee(){
+func bee() {
 	b := Bird{}
 	b.Name = "Bee"
 	b.Origin = "Australia"
@@ -52,7 +70,7 @@ func bee(){
 	fmt.Println(b)
 }
 
-func description(){
+func description() {
 	t := reflect.TypeOf(Animal{})
 	field, _ := t.FieldByName("Name")
 	fmt.Println(field.Tag)
