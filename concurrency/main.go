@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 	"time"
 )
 
@@ -11,7 +12,9 @@ import (
 
 func main() {
 	fmt.Println("concurrency")
-	sampleGoroutines() //
+	// sampleGoroutines()
+
+	exampleSendEmail()
 }
 
 func sampleGoroutines() {
@@ -30,4 +33,32 @@ func sampleGoroutines() {
 		fmt.Println("Task 1")
 	}
 
+}
+
+func exampleSendEmail() {
+	// add queue like send email
+	// split thread with goroutine for dont want to wait process to send email
+	// process send email use so many time
+	data := []string{
+		"A|20|male",
+		"B|20|female",
+		"C|20|male",
+	}
+
+	for _, person := range data {
+		go exampleProcessSendEmail(person)
+		fmt.Println("Request has been added to queue.")
+	}
+
+	time.Sleep(4 * time.Second)
+}
+
+func exampleProcessSendEmail(person string) {
+	parts := strings.Split(person, "|")
+	name := parts[0]
+	age := parts[1]
+	gender := parts[2]
+
+	time.Sleep(3 * time.Second) // simulate time consuming task
+	fmt.Printf("Send email >> Name=%-5s gender=%-6s age=%2s\n", name, gender, age)
 }
