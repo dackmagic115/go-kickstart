@@ -13,7 +13,6 @@ import (
 func main() {
 	fmt.Println("concurrency")
 	// sampleGoroutines()
-
 	exampleSendEmail()
 }
 
